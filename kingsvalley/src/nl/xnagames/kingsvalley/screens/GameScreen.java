@@ -3,54 +3,53 @@ package nl.xnagames.kingsvalley.screens;
 import nl.xnagames.kingsvalley.KingsValley;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
 
-public class SplashScreen implements Screen 
+public class GameScreen implements Screen
 {
 	// Fields
-	private KingsValley game;
+	private KingsValley game;	
 	
-	
-	public SplashScreen(KingsValley game)
+	// Constructor
+	public GameScreen(KingsValley game)
 	{
 		this.game = game;
-	}
-	
+	}	
 	
 	@Override
 	public void render(float delta) 
 	{
-		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
+		Gdx.gl.glClearColor(0f, 1f, 0f, 1f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
-		if ( Gdx.input.isKeyPressed(Keys.RIGHT))
+		if ( Gdx.input.isKeyPressed(Keys.LEFT))
 		{
-			this.game.setScreen(this.game.getGameScreen());
+			this.game.setScreen(this.game.getSplashScreen());
 		}
 	}
 
 	@Override
 	public void resize(int width, int height) 
 	{
-		
+				
 	}
 
 	@Override
 	public void show() 
 	{
-				
+		
 	}
 
 	@Override
-	public void hide() 
+	public void hide()
 	{
 		
 	}
 
 	@Override
-	public void pause() 
+	public void pause()
 	{
 		
 	}
@@ -64,7 +63,7 @@ public class SplashScreen implements Screen
 	@Override
 	public void dispose() 
 	{
-		
+	
 	}
 
 }
