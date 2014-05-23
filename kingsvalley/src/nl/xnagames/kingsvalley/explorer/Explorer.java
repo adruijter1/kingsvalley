@@ -7,6 +7,7 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
 import nl.xnagames.kingsvalley.KingsValley;
+import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
 public class Explorer
 {
@@ -17,6 +18,9 @@ public class Explorer
 	private Array<AtlasRegion> regions;
 	private AtlasRegion test;
 	private ExplorerIdleRight idleRight;
+	private ExplorerWalkRight walkRight;
+	private AnimatedSprite state;
+	private float speed;
 	
 	//Properties
 	public KingsValley getGame()
@@ -38,11 +42,22 @@ public class Explorer
 	public void setIdleRight(ExplorerIdleRight idleRight)
 	{
 		this.idleRight = idleRight;
-	}
-	
+	}	
 	public AtlasRegion getTest()
 	{
 		return this.test;
+	}
+	public float getSpeed()
+	{
+		return this.speed;
+	}
+	public ExplorerWalkRight getWalkRight()
+	{
+		return this.walkRight;
+	}
+	public void setState(AnimatedSprite state)
+	{
+		this.state = state;
 	}
 	
 	// Constructor
@@ -51,6 +66,7 @@ public class Explorer
 		this.game = game;
 		this.position =  position;
 		this.name = name;
+		this.speed = 2f;
 		
 		this.regions = new Array<AtlasRegion>();
 		
@@ -61,18 +77,21 @@ public class Explorer
 		}		
 	
 		this.idleRight = new ExplorerIdleRight(this);
+		this.walkRight = new ExplorerWalkRight(this);
+		this.state = this.getIdleRight();
+		
 	}
 	
 	// update
 	public void update(float delta)
 	{
-		this.idleRight.update(delta);
+		this.state.update(delta);
 	}
 	
 	
 	// draw
 	public void draw(float delta)
 	{
-		this.idleRight.draw(delta);
+		this.state.draw(delta);
 	}
 }

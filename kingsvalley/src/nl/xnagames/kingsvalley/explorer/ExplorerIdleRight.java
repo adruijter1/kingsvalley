@@ -1,5 +1,8 @@
 package nl.xnagames.kingsvalley.explorer;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
+
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
 public class ExplorerIdleRight extends AnimatedSprite
@@ -29,7 +32,10 @@ public class ExplorerIdleRight extends AnimatedSprite
 	//Update
 	public void update(float delta)
 	{
-		
+		if (Gdx.input.isKeyPressed(Keys.RIGHT))
+		{
+			this.explorer.setState(this.explorer.getWalkRight());
+		}
 	}
 	
 	
