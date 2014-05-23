@@ -1,6 +1,6 @@
 package nl.xnagames.kingsvalley;
 
-import gesturelistener.ExplorerGestureListener;
+import nl.xnagames.kingsvalley.gesturelistener.ExplorerGestureListener;
 import nl.xnagames.kingsvalley.screens.GameScreen;
 import nl.xnagames.kingsvalley.screens.SplashScreen;
 
@@ -8,6 +8,9 @@ import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.input.GestureDetector;
 
 public class KingsValley extends Game 
@@ -16,10 +19,12 @@ public class KingsValley extends Game
 	private SplashScreen splashScreen;
 	private GameScreen gameScreen;
 	private InputMultiplexer multiplexer;
-	private ExplorerGestureListener gestureListener;
+	private ExplorerGestureListener gestureListener;	
+	private TextureAtlas atlas;
+	private SpriteBatch batch;
 	
 	
-	// Properties
+	// Properties	
 	//setter
 	public void setSplashScreen(SplashScreen splashScreen)
 	{
@@ -41,20 +46,40 @@ public class KingsValley extends Game
 		return this.gameScreen;
 	}
 	
+	public TextureAtlas getAtlas()
+	{
+		return this.atlas;
+	}
+	public void setAtlas(TextureAtlas atlas)
+	{
+		this.atlas = atlas;
+	}
+	public SpriteBatch getBatch()
+	{
+		return this.batch;
+	}
 	
 	
 	
 	
 	@Override
 	public void create() 
-	{		
-		this.splashScreen = new SplashScreen(this);
-		this.gameScreen = new GameScreen(this);
+	{	
+		
+		
 		this.gestureListener = new ExplorerGestureListener(this);
 		this.multiplexer = new InputMultiplexer();
 		this.multiplexer.addProcessor(new GestureDetector(this.gestureListener));
 		Gdx.input.setInputProcessor(this.multiplexer);
-		this.setScreen(this.splashScreen);		
+		
+		this.atlas = new TextureAtlas(Gdx.files.internal("data/spriteheet-v01.atlas"));
+		
+		this.batch = new SpriteBatch();
+		
+		this.splashScreen = new SplashScreen(this);
+		this.gameScreen = new GameScreen(this);
+		
+		this.setScreen(this.gameScreen);		
 	}
 
 	@Override

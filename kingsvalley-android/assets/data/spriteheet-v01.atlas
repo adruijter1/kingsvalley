@@ -1,0 +1,61 @@
+
+spriteheet-v01.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+explorer
+  rotate: false
+  xy: 1, 1
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: 1
+explorer
+  rotate: false
+  xy: 21, 1
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: 2
+explorer
+  rotate: false
+  xy: 41, 1
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: 3
+explorer
+  rotate: false
+  xy: 41, 1
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: 5
+explorer
+  rotate: false
+  xy: 61, 1
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: 4
+explorer
+  rotate: false
+  xy: 61, 1
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: 6
+explorer
+  rotate: false
+  xy: 81, 1
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: 7
+explorer
+  rotate: false
+  xy: 101, 1
+  size: 18, 32
+  orig: 18, 32
+  offset: 0, 0
+  index: 8

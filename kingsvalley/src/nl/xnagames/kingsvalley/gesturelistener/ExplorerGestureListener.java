@@ -1,4 +1,4 @@
-package gesturelistener;
+package nl.xnagames.kingsvalley.gesturelistener;
 
 import nl.xnagames.kingsvalley.KingsValley;
 
