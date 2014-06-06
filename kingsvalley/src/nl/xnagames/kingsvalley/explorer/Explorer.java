@@ -2,6 +2,9 @@ package nl.xnagames.kingsvalley.explorer;
 
 
 
+import java.util.List;
+
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
@@ -16,9 +19,11 @@ public class Explorer
 	private Vector2 position;
 	private String name;
 	private Array<AtlasRegion> regions;
-	private AtlasRegion test;
+	private List<AtlasRegion> test;
 	private ExplorerIdleRight idleRight;
 	private ExplorerWalkRight walkRight;
+	private ExplorerWalkLeft walkLeft;
+	private ExplorerIdleLeft idleLeft;
 	private AnimatedSprite state;
 	private float speed;
 	
@@ -37,13 +42,14 @@ public class Explorer
 	}
 	public ExplorerIdleRight getIdleRight()
 	{
+		this.idleRight.initialize();
 		return this.idleRight;
 	}
 	public void setIdleRight(ExplorerIdleRight idleRight)
 	{
 		this.idleRight = idleRight;
 	}	
-	public AtlasRegion getTest()
+	public List<AtlasRegion> getTest()
 	{
 		return this.test;
 	}
@@ -53,8 +59,20 @@ public class Explorer
 	}
 	public ExplorerWalkRight getWalkRight()
 	{
+		this.walkRight.initialize();
 		return this.walkRight;
 	}
+	public ExplorerWalkLeft getWalkLeft()
+	{
+		this.walkLeft.initialize();
+		return this.walkLeft;
+	}
+	public ExplorerIdleLeft getIdleLeft()
+	{
+		this.idleLeft.initialize();
+		return this.idleLeft;
+	}
+	
 	public void setState(AnimatedSprite state)
 	{
 		this.state = state;
@@ -63,6 +81,7 @@ public class Explorer
 	{
 		return this.state;
 	}
+	
 	
 	// Constructor
 	public Explorer(KingsValley game, Vector2 position, String name)
@@ -74,15 +93,21 @@ public class Explorer
 		
 		this.regions = new Array<AtlasRegion>();
 		
+		
+		this.test = this.game.getAtlas().findRegions("explorer");
+		
 		for ( int i = 1; i <= 8; i++)
 		{
 			this.regions.add(this.game.getAtlas().findRegion("explorer", i));
 			
-		}		
+		}
+		
 	
 		this.idleRight = new ExplorerIdleRight(this);
 		this.walkRight = new ExplorerWalkRight(this);
-		this.state = this.getIdleRight();
+		this.walkLeft = new ExplorerWalkLeft(this);
+		this.idleLeft = new ExplorerIdleLeft(this);
+		this.state = this.getIdleLeft();
 		
 	}
 	

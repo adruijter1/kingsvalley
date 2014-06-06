@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
-public class ExplorerIdleRight extends AnimatedSprite
+public class ExplorerIdleLeft extends AnimatedSprite
 {
 	//Fields
 	private Explorer explorer;
@@ -16,7 +16,7 @@ public class ExplorerIdleRight extends AnimatedSprite
 	
 	
 	//Constructor
-	public ExplorerIdleRight(Explorer explorer)
+	public ExplorerIdleLeft(Explorer explorer)
 	{
 		super(explorer);
 		this.explorer = explorer;
@@ -28,10 +28,7 @@ public class ExplorerIdleRight extends AnimatedSprite
 	public void initialize()
 	{
 		this.i = 4;
-		for ( AtlasRegion region : this.explorer.getRegions())
-		{
-			region.flip(true, false);
-		}
+		
 	}
 	
 	//Update
