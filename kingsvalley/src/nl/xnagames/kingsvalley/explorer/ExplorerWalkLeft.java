@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Vector2;
 import nl.xnagames.kingsvalley.KingsValley;
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
-public class ExplorerWalkRight extends AnimatedSprite
+public class ExplorerWalkLeft extends AnimatedSprite
 {
 	//Fields
 		private Explorer explorer;
@@ -19,7 +19,7 @@ public class ExplorerWalkRight extends AnimatedSprite
 		
 		
 		//Constructor
-		public ExplorerWalkRight(Explorer explorer)
+		public ExplorerWalkLeft(Explorer explorer)
 		{
 			super(explorer);
 			this.explorer = explorer;

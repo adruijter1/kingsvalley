@@ -22,7 +22,7 @@ public class KingsValley extends Game
 	private ExplorerGestureListener gestureListener;	
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
-	
+	public static boolean isAndroid = false;	
 	
 	// Properties	
 	//setter

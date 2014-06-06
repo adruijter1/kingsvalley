@@ -59,6 +59,10 @@ public class Explorer
 	{
 		this.state = state;
 	}
+	public AnimatedSprite getState()
+	{
+		return this.state;
+	}
 	
 	// Constructor
 	public Explorer(KingsValley game, Vector2 position, String name)

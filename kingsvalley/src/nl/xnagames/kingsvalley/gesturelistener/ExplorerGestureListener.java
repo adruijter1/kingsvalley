@@ -16,6 +16,7 @@ public class ExplorerGestureListener implements GestureListener
 	public ExplorerGestureListener(KingsValley game)
 	{
 		this.game = game;
+		
 	}
 	
 	@Override
@@ -27,6 +28,7 @@ public class ExplorerGestureListener implements GestureListener
 	@Override
 	public boolean tap(int x, int y, int count)
 	{
+		/*
 		if (this.game.getScreen().equals(this.game.getSplashScreen()))
 		{
 			this.game.setScreen(this.game.getGameScreen());
@@ -34,7 +36,7 @@ public class ExplorerGestureListener implements GestureListener
 		if (this.game.getScreen().equals(this.game.getGameScreen()))
 		{
 			this.game.setScreen(this.game.getSplashScreen());
-		}
+		}*/
 		return false;
 	}
 
@@ -51,11 +53,17 @@ public class ExplorerGestureListener implements GestureListener
 		float angle = this.flingVector.angle();
 		if ( velocityX > 0)
 		{
-			this.game.setScreen(this.game.getGameScreen());
+			//this.game.setScreen(this.game.getGameScreen());
+			if (this.game.getGameScreen().getExplorer().getState().
+					equals(this.game.getGameScreen().getExplorer().getIdleRight()))
+			{
+				this.game.getGameScreen().getExplorer().
+					setState(this.game.getGameScreen().getExplorer().getWalkRight());
+			}
 		}
 		if ( velocityX < 0 )
 		{
-			this.game.setScreen(this.game.getSplashScreen());
+			//this.game.setScreen(this.game.getSplashScreen());
 		}
 		return false;
 	}

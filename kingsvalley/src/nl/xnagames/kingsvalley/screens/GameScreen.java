@@ -16,6 +16,11 @@ public class GameScreen implements Screen
 	private KingsValley game;
 	private Explorer explorer;
 	
+	public Explorer getExplorer()
+	{
+		return this.explorer;
+	}
+	
 	// Constructor
 	public GameScreen(KingsValley game)
 	{
