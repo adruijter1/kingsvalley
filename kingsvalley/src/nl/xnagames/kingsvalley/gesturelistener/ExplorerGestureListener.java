@@ -18,37 +18,41 @@ public class ExplorerGestureListener implements GestureListener
 		this.game = game;
 		
 	}
-	
+
 	@Override
-	public boolean touchDown(int x, int y, int pointer) 
+	public boolean zoom(float originalDistance, float currentDistance) 
 	{
 		return false;
 	}
 
 	@Override
-	public boolean tap(int x, int y, int count)
-	{
-		/*
-		if (this.game.getScreen().equals(this.game.getSplashScreen()))
-		{
-			this.game.setScreen(this.game.getGameScreen());
-		}
-		if (this.game.getScreen().equals(this.game.getGameScreen()))
-		{
-			this.game.setScreen(this.game.getSplashScreen());
-		}*/
-		return false;
-	}
-
-	@Override
-	public boolean longPress(int x, int y) 
+	public boolean pinch(Vector2 initialFirstPointer,
+			Vector2 initialSecondPointer, Vector2 firstPointer,
+			Vector2 secondPointer) 
 	{
 		return false;
 	}
 
 	@Override
-	public boolean fling(float velocityX, float velocityY) 
-	{
+	public boolean touchDown(float x, float y, int pointer, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean tap(float x, float y, int count, int button) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean longPress(float x, float y) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean fling(float velocityX, float velocityY, int button) {
 		this.flingVector = new Vector2(velocityX, velocityY);
 		float angle = this.flingVector.angle();
 		if ( velocityX > 0)
@@ -69,22 +73,14 @@ public class ExplorerGestureListener implements GestureListener
 	}
 
 	@Override
-	public boolean pan(int x, int y, int deltaX, int deltaY) 
-	{
+	public boolean pan(float x, float y, float deltaX, float deltaY) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 
 	@Override
-	public boolean zoom(float originalDistance, float currentDistance) 
-	{
-		return false;
-	}
-
-	@Override
-	public boolean pinch(Vector2 initialFirstPointer,
-			Vector2 initialSecondPointer, Vector2 firstPointer,
-			Vector2 secondPointer) 
-	{
+	public boolean panStop(float x, float y, int pointer, int button) {
+		// TODO Auto-generated method stub
 		return false;
 	}
 

@@ -2,6 +2,7 @@ package nl.xnagames.kingsvalley.explorer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 
 import nl.xnagames.kingsvalley.KingsValley;
@@ -31,6 +32,13 @@ public class ExplorerWalkRight extends AnimatedSprite
 		public void initialize()
 		{
 			this.i = 4;
+			for ( AtlasRegion region : this.explorer.getRegions())
+			{
+				if (region.isFlipX())
+				{
+					region.flip(true, false);
+				}
+			}
 		}
 		
 		//Update

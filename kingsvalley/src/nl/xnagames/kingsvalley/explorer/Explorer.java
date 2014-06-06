@@ -6,6 +6,7 @@ import java.util.List;
 
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 
@@ -19,7 +20,6 @@ public class Explorer
 	private Vector2 position;
 	private String name;
 	private Array<AtlasRegion> regions;
-	private List<AtlasRegion> test;
 	private ExplorerIdleRight idleRight;
 	private ExplorerWalkRight walkRight;
 	private ExplorerWalkLeft walkLeft;
@@ -49,10 +49,6 @@ public class Explorer
 	{
 		this.idleRight = idleRight;
 	}	
-	public List<AtlasRegion> getTest()
-	{
-		return this.test;
-	}
 	public float getSpeed()
 	{
 		return this.speed;
@@ -92,10 +88,7 @@ public class Explorer
 		this.speed = 2f;
 		
 		this.regions = new Array<AtlasRegion>();
-		
-		
-		this.test = this.game.getAtlas().findRegions("explorer");
-		
+				
 		for ( int i = 1; i <= 8; i++)
 		{
 			this.regions.add(this.game.getAtlas().findRegion("explorer", i));

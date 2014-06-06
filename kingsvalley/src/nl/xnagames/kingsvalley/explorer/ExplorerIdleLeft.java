@@ -28,7 +28,13 @@ public class ExplorerIdleLeft extends AnimatedSprite
 	public void initialize()
 	{
 		this.i = 4;
-		
+		for ( AtlasRegion region : this.explorer.getRegions())
+		{
+			if (!region.isFlipX())
+			{
+				region.flip(true, false);
+			}
+		}
 	}
 	
 	//Update
