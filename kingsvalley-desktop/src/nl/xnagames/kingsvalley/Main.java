@@ -1,6 +1,5 @@
 package nl.xnagames.kingsvalley;
 
-import com.badlogic.gdx.Files;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
 
@@ -11,7 +10,7 @@ public class Main {
 		cfg.title = "Kings Valley Betaversion 00.00.0000.01";
 		cfg.useGL20 = true;
 		cfg.width = 640;
-		cfg.height = 480;		
+		cfg.height = 480;
 		new LwjglApplication(new KingsValley(), cfg);
 	}
 }

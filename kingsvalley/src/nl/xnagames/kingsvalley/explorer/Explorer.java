@@ -1,15 +1,8 @@
 package nl.xnagames.kingsvalley.explorer;
 
-
-
-import java.util.List;
-
-import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
-
 import nl.xnagames.kingsvalley.KingsValley;
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
@@ -58,6 +51,7 @@ public class Explorer
 		this.walkRight.initialize();
 		return this.walkRight;
 	}
+	
 	public ExplorerWalkLeft getWalkLeft()
 	{
 		this.walkLeft.initialize();
@@ -91,16 +85,17 @@ public class Explorer
 				
 		for ( int i = 1; i <= 8; i++)
 		{
-			this.regions.add(this.game.getAtlas().findRegion("explorer", i));
+			this.regions.add(this.game.getAtlas().findRegion(this.name, i));
 			
 		}
 		
 	
 		this.idleRight = new ExplorerIdleRight(this);
 		this.walkRight = new ExplorerWalkRight(this);
-		this.walkLeft = new ExplorerWalkLeft(this);
 		this.idleLeft = new ExplorerIdleLeft(this);
-		this.state = this.getIdleLeft();
+		this.walkLeft = new ExplorerWalkLeft(this);
+		
+		this.state = this.getWalkRight();
 		
 	}
 	

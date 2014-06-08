@@ -2,55 +2,48 @@ package nl.xnagames.kingsvalley.explorer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 
-import nl.xnagames.kingsvalley.KingsValley;
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
 public class ExplorerWalkLeft extends AnimatedSprite
 {
-	//Fields
-		private Explorer explorer;
-		private Vector2 velocity;
-		
-		
-		//Properties
-		
-		
-		//Constructor
-		public ExplorerWalkLeft(Explorer explorer)
+	private Explorer explorer;
+	private Vector2 velocity;
+	
+	public ExplorerWalkLeft(Explorer explorer)
+	{
+		super(explorer);
+		this.explorer = explorer;
+		this.velocity = new Vector2(-this.explorer.getSpeed(), 0f);
+		this.initialize();
+	}
+	
+	public void initialize()
+	{
+		this.i = 0;
+		for ( AtlasRegion region : this.explorer.getRegions())
 		{
-			// explorer instantie wordt doorgegeven aan de parentclass AnimatedSprite
-			super(explorer);
-			this.explorer = explorer;
-			this.velocity = new Vector2(-1f * this.explorer.getSpeed(), 0f);
-			this.initialize();
-		}
-		
-		
-		// Initialize
-		public void initialize()
-		{
-			this.i = 4;
-		}
-		
-		//Update
-		public void update(float delta)
-		{
-			super.update(delta);
-			this.explorer.getPosition().add(this.velocity);
-			if (!Gdx.input.isKeyPressed(Keys.LEFT))
+			if (!region.isFlipX())
 			{
-				if (!KingsValley.isAndroid)
-				this.explorer.setState(this.explorer.getIdleLeft());
+				region.flip(true, false);
 			}
 		}
-		
-		
-		// Draw
-		public void draw(float delta)
+	}
+	
+	public void update(float delta)
+	{
+		super.update(delta);
+		this.explorer.getPosition().add(this.velocity);
+		if (!Gdx.input.isKeyPressed(Keys.LEFT))
 		{
-			super.draw(delta);
+			this.explorer.setState(this.explorer.getIdleLeft());
 		}
-
+	}
+	
+	public void draw(float delta)
+	{
+		super.draw(delta);
+	}
 }

@@ -5,9 +5,7 @@ import nl.xnagames.kingsvalley.explorer.Explorer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.GL10;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen implements Screen
@@ -34,17 +32,17 @@ public class GameScreen implements Screen
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		
-		this.explorer.update(delta);
-		
+		this.explorer.update(delta);	
 		
 		this.game.getBatch().begin();
 		this.explorer.draw(delta);
 		this.game.getBatch().end();
 		
+		/*
 		if ( Gdx.input.isKeyPressed(Keys.LEFT))
 		{
 			this.game.setScreen(this.game.getSplashScreen());
-		}
+		}*/
 	}
 
 	@Override
@@ -82,5 +80,4 @@ public class GameScreen implements Screen
 	{
 	
 	}
-
 }

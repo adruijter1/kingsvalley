@@ -11,7 +11,7 @@
 </listAttribute>
 <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="com.google.gwt.eclipse.core.moduleClasspathProvider"/>
 <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.google.gwt.dev.DevMode"/>
-<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl index.html -logLevel INFO -codeServerPort 9997 -port 8888 -war &quot;C:\Users\Arjan de Ruijter\Documents\2013-2014\Blok3\Kings Valley\kingsvalley-html\war&quot; nl.xnagames.kingsvalley.GwtDefinition"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-remoteUI &quot;${gwt_remote_ui_server_port}:${unique_id}&quot; -startupUrl index.html -logLevel INFO -codeServerPort 9997 -port 8888 -war &quot;C:\Users\Arjan de Ruijter\Documents\2013-2014\Blok4\Kings Valley\kingsvalley-html\war&quot; nl.xnagames.kingsvalley.GwtDefinition"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="kingsvalley-html"/>
 <stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Xmx512m"/>
 </launchConfiguration>

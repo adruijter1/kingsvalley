@@ -3,32 +3,25 @@ package nl.xnagames.kingsvalley.screens;
 import nl.xnagames.kingsvalley.KingsValley;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
 
 public class SplashScreen implements Screen 
 {
 	// Fields
-	private KingsValley game;
+	//private KingsValley game;
 	
 	
 	public SplashScreen(KingsValley game)
 	{
-		this.game = game;
-	}
-	
+		//this.game = game;
+	}	
 	
 	@Override
 	public void render(float delta) 
 	{
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
-		
-		if ( Gdx.input.isKeyPressed(Keys.RIGHT))
-		{
-			this.game.setScreen(this.game.getGameScreen());
-		}
 	}
 
 	@Override
@@ -66,5 +59,4 @@ public class SplashScreen implements Screen
 	{
 		
 	}
-
 }

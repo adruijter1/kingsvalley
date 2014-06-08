@@ -4,8 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
-
-import nl.xnagames.kingsvalley.KingsValley;
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
 public class ExplorerWalkRight extends AnimatedSprite
@@ -31,7 +29,7 @@ public class ExplorerWalkRight extends AnimatedSprite
 		// Initialize
 		public void initialize()
 		{
-			this.i = 4;
+			this.i = 3;
 			for ( AtlasRegion region : this.explorer.getRegions())
 			{
 				if (region.isFlipX())
@@ -48,7 +46,6 @@ public class ExplorerWalkRight extends AnimatedSprite
 			this.explorer.getPosition().add(this.velocity);
 			if (!Gdx.input.isKeyPressed(Keys.RIGHT))
 			{
-				if ( !KingsValley.isAndroid)
 				this.explorer.setState(this.explorer.getIdleRight());
 			}
 		}

@@ -3,14 +3,12 @@ package nl.xnagames.kingsvalley;
 import nl.xnagames.kingsvalley.gesturelistener.ExplorerGestureListener;
 import nl.xnagames.kingsvalley.screens.GameScreen;
 import nl.xnagames.kingsvalley.screens.SplashScreen;
-
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.input.GestureDetector;
 
 public class KingsValley extends Game 
@@ -22,7 +20,7 @@ public class KingsValley extends Game
 	private ExplorerGestureListener gestureListener;	
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
-	public static boolean isAndroid = false;	
+
 	
 	// Properties	
 	//setter

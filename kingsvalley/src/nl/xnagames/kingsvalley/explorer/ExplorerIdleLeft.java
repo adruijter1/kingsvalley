@@ -2,18 +2,14 @@ package nl.xnagames.kingsvalley.explorer;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
-import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
-
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
 public class ExplorerIdleLeft extends AnimatedSprite
 {
 	//Fields
-	private Explorer explorer;
+	private Explorer explorer;	
 	
-	
-	//Properties
-	
+	//Properties	
 	
 	//Constructor
 	public ExplorerIdleLeft(Explorer explorer)
@@ -27,14 +23,10 @@ public class ExplorerIdleLeft extends AnimatedSprite
 	// Initialize
 	public void initialize()
 	{
-		this.i = 4;
-		for ( AtlasRegion region : this.explorer.getRegions())
-		{
-			if (!region.isFlipX())
-			{
-				region.flip(true, false);
-			}
-		}
+		this.i = 7;
+		
+		if (!this.explorer.getRegions().get(this.i).isFlipX())
+			this.explorer.getRegions().get(this.i).flip(true, false);
 	}
 	
 	//Update

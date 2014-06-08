@@ -1,7 +1,8 @@
 package nl.xnagames.kingsvalley.gesturelistener;
 
 import nl.xnagames.kingsvalley.KingsValley;
-
+import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
+import nl.xnagames.kingsvalley.explorer.Explorer;
 import com.badlogic.gdx.input.GestureDetector.GestureListener;
 import com.badlogic.gdx.math.Vector2;
 
@@ -9,14 +10,12 @@ public class ExplorerGestureListener implements GestureListener
 {
 	// Fields
 	private KingsValley game;
-	private Vector2 flingVector;
-	
+	//private Vector2 flingVector;
 	
 	// Constructor
 	public ExplorerGestureListener(KingsValley game)
 	{
-		this.game = game;
-		
+		this.game = game;		
 	}
 
 	@Override
@@ -34,53 +33,55 @@ public class ExplorerGestureListener implements GestureListener
 	}
 
 	@Override
-	public boolean touchDown(float x, float y, int pointer, int button) {
-		// TODO Auto-generated method stub
+	public boolean touchDown(float x, float y, int pointer, int button) 
+	{
 		return false;
 	}
 
 	@Override
-	public boolean tap(float x, float y, int count, int button) {
-		// TODO Auto-generated method stub
+	public boolean tap(float x, float y, int count, int button)
+	{
 		return false;
 	}
 
 	@Override
-	public boolean longPress(float x, float y) {
-		// TODO Auto-generated method stub
+	public boolean longPress(float x, float y)
+	{
 		return false;
 	}
 
 	@Override
 	public boolean fling(float velocityX, float velocityY, int button) {
-		this.flingVector = new Vector2(velocityX, velocityY);
-		float angle = this.flingVector.angle();
+		//this.flingVector = new Vector2(velocityX, velocityY);
+		//float angle = this.flingVector.angle();
+		AnimatedSprite state = this.game.getGameScreen().getExplorer().getState();
+		Explorer explorer = this.game.getGameScreen().getExplorer();
 		if ( velocityX > 0)
-		{
-			//this.game.setScreen(this.game.getGameScreen());
-			if (this.game.getGameScreen().getExplorer().getState().
-					equals(this.game.getGameScreen().getExplorer().getIdleRight()))
+		{			
+			if (state.equals(explorer.getIdleRight()))
 			{
-				this.game.getGameScreen().getExplorer().
-					setState(this.game.getGameScreen().getExplorer().getWalkRight());
+				explorer.setState(explorer.getWalkRight());
 			}
 		}
 		if ( velocityX < 0 )
 		{
-			//this.game.setScreen(this.game.getSplashScreen());
+			if (state.equals(explorer.getIdleLeft()))
+			{
+				explorer.setState(explorer.getWalkLeft());
+			}
 		}
 		return false;
 	}
 
 	@Override
-	public boolean pan(float x, float y, float deltaX, float deltaY) {
-		// TODO Auto-generated method stub
+	public boolean pan(float x, float y, float deltaX, float deltaY)
+	{
 		return false;
 	}
 
 	@Override
-	public boolean panStop(float x, float y, int pointer, int button) {
-		// TODO Auto-generated method stub
+	public boolean panStop(float x, float y, int pointer, int button) 
+	{
 		return false;
 	}
 
