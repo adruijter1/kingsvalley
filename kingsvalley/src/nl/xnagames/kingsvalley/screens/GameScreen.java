@@ -23,7 +23,7 @@ public class GameScreen implements Screen
 	public GameScreen(KingsValley game)
 	{
 		this.game = game;
-		this.explorer = new Explorer(this.game, new Vector2(320f, 240f), "explorer");
+		this.explorer = new Explorer(this.game, new Vector2(0f, 0f), "explorer");
 	}	
 	
 	@Override

@@ -48,6 +48,10 @@ public class ExplorerWalkRight extends AnimatedSprite
 			{
 				this.explorer.setState(this.explorer.getIdleRight());
 			}
+			if (Gdx.input.isKeyPressed(Keys.SPACE))
+			{
+				this.explorer.setState(this.explorer.getJumpRight());
+			}
 		}
 		
 		

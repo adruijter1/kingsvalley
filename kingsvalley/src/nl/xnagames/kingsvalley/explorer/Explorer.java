@@ -17,6 +17,7 @@ public class Explorer
 	private ExplorerWalkRight walkRight;
 	private ExplorerWalkLeft walkLeft;
 	private ExplorerIdleLeft idleLeft;
+	private ExplorerJumpRight jumpRight;
 	private AnimatedSprite state;
 	private float speed;
 	
@@ -32,6 +33,10 @@ public class Explorer
 	public Vector2 getPosition()
 	{
 		return this.position;
+	}
+	public void setPosition(Vector2 position)
+	{
+		this.position = position;
 	}
 	public ExplorerIdleRight getIdleRight()
 	{
@@ -61,6 +66,12 @@ public class Explorer
 	{
 		this.idleLeft.initialize();
 		return this.idleLeft;
+	}
+	
+	public ExplorerJumpRight getJumpRight()
+	{
+		this.jumpRight.initialize();
+		return this.jumpRight;
 	}
 	
 	public void setState(AnimatedSprite state)
@@ -94,7 +105,7 @@ public class Explorer
 		this.walkRight = new ExplorerWalkRight(this);
 		this.idleLeft = new ExplorerIdleLeft(this);
 		this.walkLeft = new ExplorerWalkLeft(this);
-		
+		this.jumpRight = new ExplorerJumpRight(this, 24, 32);
 		this.state = this.getWalkRight();
 		
 	}
