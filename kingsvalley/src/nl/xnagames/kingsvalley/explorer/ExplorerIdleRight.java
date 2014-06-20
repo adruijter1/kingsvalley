@@ -8,7 +8,8 @@ import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 public class ExplorerIdleRight extends AnimatedSprite
 {
 	//Fields
-	private Explorer explorer;	
+	private Explorer explorer;
+	private boolean ks, oks;
 	
 	//Properties	
 	
@@ -33,6 +34,8 @@ public class ExplorerIdleRight extends AnimatedSprite
 	//Update
 	public void update(float delta)
 	{
+		ks = Gdx.input.isKeyPressed(Keys.SPACE);
+		
 		if (Gdx.input.isKeyPressed(Keys.RIGHT))
 		{
 			this.explorer.setState(this.explorer.getWalkRight());
@@ -41,6 +44,13 @@ public class ExplorerIdleRight extends AnimatedSprite
 		{
 			this.explorer.setState(this.explorer.getWalkLeft());
 		}
+		if (this.ks && !this.oks)
+		{
+			this.explorer.setState(this.explorer.getIdleJumpRight());
+		}
+		
+		this.oks = ks;
+		
 	}	
 	
 	// Draw

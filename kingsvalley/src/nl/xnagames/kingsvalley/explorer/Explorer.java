@@ -20,6 +20,7 @@ public class Explorer
 	private ExplorerJumpRight jumpRight;
 	private AnimatedSprite state;
 	private float speed;
+	private ExplorerIdleJumpRight idleJumpRight;
 	
 	//Properties
 	public KingsValley getGame()
@@ -74,6 +75,12 @@ public class Explorer
 		return this.jumpRight;
 	}
 	
+	public ExplorerIdleJumpRight getIdleJumpRight()
+	{
+		this.idleJumpRight.initialize();
+		return this.idleJumpRight;
+	}
+	
 	public void setState(AnimatedSprite state)
 	{
 		this.state = state;
@@ -106,6 +113,7 @@ public class Explorer
 		this.idleLeft = new ExplorerIdleLeft(this);
 		this.walkLeft = new ExplorerWalkLeft(this);
 		this.jumpRight = new ExplorerJumpRight(this, 24, 32);
+		this.idleJumpRight = new ExplorerIdleJumpRight(this, 24, 32);
 		this.state = this.getWalkRight();
 		
 	}
