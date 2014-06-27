@@ -4,17 +4,17 @@ import com.badlogic.gdx.math.Vector2;
 
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
-public class ExplorerJumpRight extends AnimatedSprite
+public class ExplorerIdleJumpLeft extends AnimatedSprite
 {
 	// Fields
 	private Explorer explorer;
-	float startX, startY, a;
+	float startX, startY, a, x;
 	int h, k, startH, startK;
 	
 	
 	
 	// De constructor van de ExplorerJumpRight Class
-	public ExplorerJumpRight(Explorer explorer, int h, int k)
+	public ExplorerIdleJumpLeft(Explorer explorer, int h, int k)
 	{
 		// De explorer instantie wordt meegegeven aan de parent class AnimatedSprite
 		super(explorer);
@@ -31,6 +31,7 @@ public class ExplorerJumpRight extends AnimatedSprite
 		this.h = (int)this.startX + this.startH;
 		this.k = (int)this.startY + this.startK;
 		this.a = initializeA();
+		this.x = this.startX;
 	}
 	
 	private float initializeA() 
@@ -40,17 +41,16 @@ public class ExplorerJumpRight extends AnimatedSprite
 
 	public void update(float delta)
 	{
-		float x = this.explorer.getPosition().x + this.explorer.getSpeed();
+		this.x = this.x - this.explorer.getSpeed();
 		
 		float y = this.a * (float)Math.pow((x - this.h), 2d) + this.k;
-				
-		if ( y < this.startY )
+		
+		if ( y < startY )
 		{
-			y = startY;
-			this.explorer.setState(this.explorer.getWalkRight());			
+			y = this.startY;
+			this.explorer.setState(this.explorer.getIdleLeft());			
 		}
-		this.explorer.setPosition(new Vector2(x,y));
-		this.explorer.getCam().translate(this.explorer.getSpeed(), 0f);
+		this.explorer.setPosition(new Vector2(this.startX,y));
 		//super.update(delta);
 	}
 	

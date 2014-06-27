@@ -40,6 +40,7 @@ public class ExplorerWalkLeft extends AnimatedSprite
 		{
 			this.explorer.setState(this.explorer.getIdleLeft());
 		}
+		this.explorer.getCam().translate(-this.explorer.getSpeed(), 0f);
 	}
 	
 	public void draw(float delta)

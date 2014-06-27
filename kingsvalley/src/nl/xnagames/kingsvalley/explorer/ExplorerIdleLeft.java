@@ -8,6 +8,7 @@ public class ExplorerIdleLeft extends AnimatedSprite
 {
 	//Fields
 	private Explorer explorer;	
+	private boolean ks, oks;
 	
 	//Properties	
 	
@@ -32,6 +33,8 @@ public class ExplorerIdleLeft extends AnimatedSprite
 	//Update
 	public void update(float delta)
 	{
+		this.ks = Gdx.input.isKeyPressed(Keys.SPACE);
+		
 		if (Gdx.input.isKeyPressed(Keys.RIGHT))
 		{
 			this.explorer.setState(this.explorer.getWalkRight());
@@ -40,6 +43,12 @@ public class ExplorerIdleLeft extends AnimatedSprite
 		{
 			this.explorer.setState(this.explorer.getWalkLeft());
 		}
+		if (this.ks && !this.oks)
+		{
+			this.explorer.setState(this.explorer.getIdleJumpLeft());
+		}
+		
+		this.oks = this.ks;
 	}
 	
 	

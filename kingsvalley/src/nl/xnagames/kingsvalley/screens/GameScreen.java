@@ -4,8 +4,12 @@ import nl.xnagames.kingsvalley.KingsValley;
 import nl.xnagames.kingsvalley.explorer.Explorer;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL10;
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 
 public class GameScreen implements Screen
@@ -13,6 +17,10 @@ public class GameScreen implements Screen
 	// Fields
 	private KingsValley game;
 	private Explorer explorer;
+	private OrthographicCamera cam;
+	private int canvasWidth, canvasHeight;
+	private Texture background;
+	private Rectangle viewport;
 	
 	public Explorer getExplorer()
 	{
@@ -23,7 +31,14 @@ public class GameScreen implements Screen
 	public GameScreen(KingsValley game)
 	{
 		this.game = game;
-		this.explorer = new Explorer(this.game, new Vector2(0f, 0f), "explorer");
+		this.viewport = new Rectangle(10, 10f, 620f, 460f);
+		this.background = new Texture(Gdx.files.internal("data/cosmos_flower_macro.jpg"));		
+		this.canvasWidth = Gdx.graphics.getWidth();
+		this.canvasHeight = Gdx.graphics.getHeight();
+		this.cam = new OrthographicCamera(this.canvasWidth, this.canvasHeight);
+		this.explorer = new Explorer(this.game, new Vector2(this.canvasWidth/2f, 0f), "explorer", this.cam);
+		this.cam.position.set(this.canvasWidth/2f, this.canvasHeight/2f, 0f);
+		this.cam.update();
 	}	
 	
 	@Override
@@ -31,18 +46,22 @@ public class GameScreen implements Screen
 	{
 		Gdx.gl.glClearColor(0f, 0f, 0f, 1f);
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		Gdx.gl.glViewport((int)this.viewport.x, (int)this.viewport.y,
+						  (int)this.viewport.width, (int)this.viewport.height);
+		this.handleInput();		
 		
-		this.explorer.update(delta);	
+		this.cam.update();
+		
+		this.explorer.update(delta);
+		// Zonder dit werkt het niet
+		this.game.getBatch().setProjectionMatrix(this.cam.combined);
 		
 		this.game.getBatch().begin();
+		this.game.getBatch().draw(this.background,
+								  -this.background.getWidth()/2f, 
+								  -this.background.getHeight()/2f);
 		this.explorer.draw(delta);
 		this.game.getBatch().end();
-		
-		/*
-		if ( Gdx.input.isKeyPressed(Keys.LEFT))
-		{
-			this.game.setScreen(this.game.getSplashScreen());
-		}*/
 	}
 
 	@Override
@@ -79,5 +98,41 @@ public class GameScreen implements Screen
 	public void dispose() 
 	{
 	
+	}
+	
+	private void handleInput()
+	{
+		if (Gdx.input.isKeyPressed(Keys.D))
+		{
+			this.cam.translate(4f, 0f);
+		}
+		if (Gdx.input.isKeyPressed(Keys.A))
+		{
+			this.cam.translate(-4f, 0f);
+		}
+		if (Gdx.input.isKeyPressed(Keys.W))
+		{
+			this.cam.translate(0f, 4f);
+		}
+		if (Gdx.input.isKeyPressed(Keys.S))
+		{
+			this.cam.translate(0f, -4f);
+		}
+		if (Gdx.input.isKeyPressed(Keys.NUM_1))
+		{
+			this.cam.zoom += 0.01f;
+		}
+		if (Gdx.input.isKeyPressed(Keys.NUM_2))
+		{
+			this.cam.zoom -= 0.01f;
+		}
+		if (Gdx.input.isKeyPressed(Keys.NUM_0))
+		{			
+			this.cam.rotate(0.5f);
+		}
+		if (Gdx.input.isKeyPressed(Keys.NUM_9))
+		{
+			this.cam.rotate(-0.5f);
+		}
 	}
 }

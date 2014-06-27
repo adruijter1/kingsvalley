@@ -52,6 +52,7 @@ public class ExplorerWalkRight extends AnimatedSprite
 			{
 				this.explorer.setState(this.explorer.getJumpRight());
 			}
+			this.explorer.getCam().translate(this.explorer.getSpeed(), 0f);
 		}
 		
 		

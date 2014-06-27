@@ -1,8 +1,10 @@
 package nl.xnagames.kingsvalley.explorer;
 
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
+
 import nl.xnagames.kingsvalley.KingsValley;
 import nl.xnagames.kingsvalley.animatedsprite.AnimatedSprite;
 
@@ -21,6 +23,8 @@ public class Explorer
 	private AnimatedSprite state;
 	private float speed;
 	private ExplorerIdleJumpRight idleJumpRight;
+	private ExplorerIdleJumpLeft idleJumpLeft;
+	private OrthographicCamera cam;
 	
 	//Properties
 	public KingsValley getGame()
@@ -81,6 +85,12 @@ public class Explorer
 		return this.idleJumpRight;
 	}
 	
+	public ExplorerIdleJumpLeft getIdleJumpLeft()
+	{
+		this.idleJumpLeft.initialize();
+		return this.idleJumpLeft;
+	}
+	
 	public void setState(AnimatedSprite state)
 	{
 		this.state = state;
@@ -89,14 +99,19 @@ public class Explorer
 	{
 		return this.state;
 	}
+	public OrthographicCamera getCam()
+	{
+		return this.cam;
+	}
 	
 	
 	// Constructor
-	public Explorer(KingsValley game, Vector2 position, String name)
+	public Explorer(KingsValley game, Vector2 position, String name, OrthographicCamera cam)
 	{
 		this.game = game;
 		this.position =  position;
 		this.name = name;
+		this.cam = cam;
 		this.speed = 2f;
 		
 		this.regions = new Array<AtlasRegion>();
@@ -114,6 +129,7 @@ public class Explorer
 		this.walkLeft = new ExplorerWalkLeft(this);
 		this.jumpRight = new ExplorerJumpRight(this, 24, 32);
 		this.idleJumpRight = new ExplorerIdleJumpRight(this, 24, 32);
+		this.idleJumpLeft = new ExplorerIdleJumpLeft(this, -24, 32);
 		this.state = this.getWalkRight();
 		
 	}
