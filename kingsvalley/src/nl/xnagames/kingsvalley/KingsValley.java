@@ -3,9 +3,11 @@ package nl.xnagames.kingsvalley;
 import nl.xnagames.kingsvalley.gesturelistener.ExplorerGestureListener;
 import nl.xnagames.kingsvalley.screens.GameScreen;
 import nl.xnagames.kingsvalley.screens.SplashScreen;
+
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputMultiplexer;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL10;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
@@ -20,6 +22,7 @@ public class KingsValley extends Game
 	private ExplorerGestureListener gestureListener;	
 	private TextureAtlas atlas;
 	private SpriteBatch batch;
+	private Music introMusic, masterMelody;
 
 	
 	// Properties	
@@ -56,6 +59,14 @@ public class KingsValley extends Game
 	{
 		return this.batch;
 	}
+	public Music getIntroMusic()
+	{
+		return this.introMusic;
+	}
+	public Music getMasterMelody()
+	{
+		return this.masterMelody;
+	}
 	
 	
 	
@@ -73,7 +84,8 @@ public class KingsValley extends Game
 		this.atlas = new TextureAtlas(Gdx.files.internal("data/spriteheet-v01.atlas"));
 		
 		this.batch = new SpriteBatch();
-		
+		this.introMusic = Gdx.audio.newMusic(Gdx.files.internal("data/Sound/intro.mp3"));
+		this.masterMelody = Gdx.audio.newMusic(Gdx.files.internal("data/Sound/masterMelody.mp3"));
 		this.splashScreen = new SplashScreen(this);
 		this.gameScreen = new GameScreen(this);
 		

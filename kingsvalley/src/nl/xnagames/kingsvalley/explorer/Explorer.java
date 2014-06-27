@@ -1,5 +1,7 @@
 package nl.xnagames.kingsvalley.explorer;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas.AtlasRegion;
 import com.badlogic.gdx.math.Vector2;
@@ -25,6 +27,7 @@ public class Explorer
 	private ExplorerIdleJumpRight idleJumpRight;
 	private ExplorerIdleJumpLeft idleJumpLeft;
 	private OrthographicCamera cam;
+	private Sound jumpSound;
 	
 	//Properties
 	public KingsValley getGame()
@@ -103,6 +106,10 @@ public class Explorer
 	{
 		return this.cam;
 	}
+	public Sound getJumpSound()
+	{
+		return this.jumpSound;
+	}
 	
 	
 	// Constructor
@@ -122,6 +129,8 @@ public class Explorer
 			
 		}
 		
+		this.jumpSound = Gdx.audio.newSound(Gdx.files.internal("data/Sound/FallOfHighFloor.mp3"));
+		
 	
 		this.idleRight = new ExplorerIdleRight(this);
 		this.walkRight = new ExplorerWalkRight(this);
@@ -130,7 +139,7 @@ public class Explorer
 		this.jumpRight = new ExplorerJumpRight(this, 24, 32);
 		this.idleJumpRight = new ExplorerIdleJumpRight(this, 24, 32);
 		this.idleJumpLeft = new ExplorerIdleJumpLeft(this, -24, 32);
-		this.state = this.getWalkRight();
+		this.state = this.walkRight;
 		
 	}
 	

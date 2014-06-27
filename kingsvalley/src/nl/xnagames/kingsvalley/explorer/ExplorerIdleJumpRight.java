@@ -21,7 +21,6 @@ public class ExplorerIdleJumpRight extends AnimatedSprite
 		this.explorer = explorer;
 		this.startH = h;
 		this.startK = k;
-		this.initialize();
 	}
 	
 	public void initialize()
@@ -32,6 +31,7 @@ public class ExplorerIdleJumpRight extends AnimatedSprite
 		this.k = (int)this.startY + this.startK;
 		this.a = initializeA();
 		this.x = this.startX;
+		this.explorer.getJumpSound().play();
 	}
 	
 	private float initializeA() 

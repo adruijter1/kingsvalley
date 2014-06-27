@@ -21,6 +21,8 @@ public class GameScreen implements Screen
 	private int canvasWidth, canvasHeight;
 	private Texture background;
 	private Rectangle viewport;
+	private float timer = 0f;
+	private boolean onceIntro = true, onceMaster = true;
 	
 	public Explorer getExplorer()
 	{
@@ -48,6 +50,9 @@ public class GameScreen implements Screen
 		Gdx.gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		Gdx.gl.glViewport((int)this.viewport.x, (int)this.viewport.y,
 						  (int)this.viewport.width, (int)this.viewport.height);
+		
+		this.playIntro(delta);
+		
 		this.handleInput();		
 		
 		this.cam.update();
@@ -134,5 +139,29 @@ public class GameScreen implements Screen
 		{
 			this.cam.rotate(-0.5f);
 		}
+	}
+	
+	private void playIntro(float delta)
+	{
+		Gdx.app.log("this.timer", Float.toString(this.timer));
+		Gdx.app.log("isplaying:", Boolean.toString(this.game.getIntroMusic().isPlaying()));
+		Gdx.app.log("once:", Boolean.toString(this.onceIntro));
+		Gdx.app.log("this.timer", Float.toString(this.timer));
+		
+		if ( this.timer > 0.5f && this.onceIntro)
+		{			
+			this.game.getIntroMusic().play();
+			this.game.getIntroMusic().setVolume(1f);
+			this.onceIntro = false;
+		}
+		if ( this.timer > 8f && this.onceMaster)
+		{
+			this.game.getMasterMelody().play();
+			this.game.getMasterMelody().setLooping(true);;
+			this.onceMaster = false;
+		}
+		if ( this.timer < 9f)
+		this.timer += delta;		
+			
 	}
 }
